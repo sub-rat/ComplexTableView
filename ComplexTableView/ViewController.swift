@@ -9,10 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
+    fileprivate let viewModel = ProfileViewModel()
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView?.dataSource = viewModel
+        tableView?.estimatedRowHeight = 100
+        tableView?.rowHeight = UITableView.automaticDimension
+       
+        tableView?.register(NamePictureCellTableViewCell.nib, forCellReuseIdentifier: NamePictureCellTableViewCell.identifier)
+        tableView?.register(FriendCell.nib, forCellReuseIdentifier: FriendCell.identifier)
+        tableView?.register(EmailCell.nib, forCellReuseIdentifier: EmailCell.identifier)
+        tableView?.register(AttributeCell.nib, forCellReuseIdentifier: AttributeCell.identifier)
+        tableView?.register(AboutCell.nib, forCellReuseIdentifier: AboutCell.identifier)
     }
 
 
